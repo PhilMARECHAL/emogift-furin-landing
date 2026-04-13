@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — EmoGift</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4A574;
+            --primary-deep: #C97F6F;
+            --accent: #E8B4A8;
+            --dark: #2C2416;
+            --light: #FDFBF7;
+            --muted: #A89080;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--light); line-height: 1.6; margin: 0; }
+        .banner { background: var(--primary-deep); color: #fff; text-align: center; padding: 6px 12px; font-size: 0.75rem; letter-spacing: 0.5px; }
+        .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--primary-deep); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--dark); }
+        .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.15rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; color: var(--primary-deep); }
+        p { font-size: 0.95rem; color: #4a3c30; }
+
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        @media (max-width: 560px) { .contact-grid { grid-template-columns: 1fr; } }
+        .contact-card { background: #fff; border: 1px solid #e8ddd4; border-radius: 8px; padding: 1.25rem; text-align: center; }
+        .contact-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .contact-card .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+        .contact-card .value { font-size: 0.95rem; margin-top: 0.25rem; font-weight: 500; }
+        .contact-card a { color: var(--primary-deep); text-decoration: none; }
+        .contact-card a:hover { text-decoration: underline; }
+
+        .form-section { background: #fff; border: 1px solid #e8ddd4; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; }
+        .form-row { margin-bottom: 1rem; }
+        .form-row label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 0.3rem; }
+        .form-row input,
+        .form-row select,
+        .form-row textarea {
+            width: 100%; padding: 0.65rem 0.85rem; border: 1px solid #d8cec4; border-radius: 6px;
+            font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--dark);
+            background: var(--light); box-sizing: border-box; transition: border-color 0.2s;
+        }
+        .form-row input:focus,
+        .form-row select:focus,
+        .form-row textarea:focus { outline: none; border-color: var(--primary); }
+        .form-row textarea { resize: vertical; min-height: 120px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+
+        .btn-submit {
+            display: inline-block; padding: 0.75rem 2rem; background: var(--primary-deep); color: #fff;
+            border: none; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+            font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem;
+        }
+        .btn-submit:hover { background: var(--dark); }
+
+        .demo-notice { background: #fdf6f0; border: 1px dashed var(--primary); border-radius: 6px; padding: 0.75rem 1rem; margin-top: 1rem; font-size: 0.8rem; color: var(--muted); text-align: center; }
+
+        .response-time { display: inline-block; background: #e8f5e9; color: #2e7d32; font-size: 0.8rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 20px; margin-top: 0.5rem; }
+
+        footer { text-align: center; padding: 2rem 1rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid #e8ddd4; }
+    </style>
+</head>
+<body>
+    <div class="banner">SIMULATION / DEMO — Ce site est une maquette de démonstration</div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Retour au site</a>
+
+        <h1>Contactez-nous</h1>
+        <p>Une question sur nos furin, votre commande ou votre vidéo personnalisée ? Notre équipe est à votre écoute.</p>
+        <span class="response-time">Réponse sous 24-48h</span>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="icon">&#9993;</div>
+                <div class="label">Email</div>
+                <div class="value"><a href="mailto:contact@emogift.fr">contact@emogift.fr</a></div>
+            </div>
+            <div class="contact-card">
+                <div class="icon">&#9742;</div>
+                <div class="label">Téléphone</div>
+                <div class="value"><a href="tel:+33123456789">+33 1 23 45 67 89</a></div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 style="margin-top:0">Envoyez-nous un message</h2>
+
+            <form onsubmit="event.preventDefault(); document.getElementById('demo-alert').style.display='block';">
+                <div class="form-grid">
+                    <div class="form-row">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="email">Adresse email</label>
+                        <input type="email" id="email" name="email" placeholder="votre@email.fr" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label for="subject">Sujet</label>
+                    <select id="subject" name="subject" required>
+                        <option value="" disabled selected>Choisissez un sujet</option>
+                        <option value="commande">Question sur une commande</option>
+                        <option value="produit">Information produit</option>
+                        <option value="video">Vidéo personnalisée / QR Code</option>
+                        <option value="retour">Retour / Échange</option>
+                        <option value="partenariat">Partenariat / Professionnel</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Décrivez votre demande..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Envoyer le message</button>
+
+                <div id="demo-alert" class="demo-notice" style="display:none;">
+                    Ceci est une démonstration. En production, votre message serait envoyé à notre équipe. Merci pour votre intérêt !
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>EmoGift — Simulation / Demo &bull; Tous droits réservés</p>
+    </footer>
+</body>
+</html>

@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EmoGift — Le cadeau qui fait pleurer de joie</title>
-    <meta name="description" content="Furin japonais + vidéo personnelle pour Fête des Mères. Offrez un carillon en verre soufflé avec votre message vidéo caché. Cadeau émotionnel unique à 89€.">
+    <meta name="description" content="Furin japonais + vidéo personnelle pour Fête des Mères. Offrez un carillon en verre soufflé avec votre message vidéo caché. Cadeau émotionnel unique à 49€.">
     <meta property="og:title" content="EmoGift — Offrez plus qu'un cadeau, offrez votre cœur">
-    <meta property="og:description" content="Un carillon japonais en verre soufflé accompagné de votre message vidéo personnel. Fête des Mères 2026.">
+    <meta property="og:description" content="Un carillon japonais en verre soufflé accompagné de votre message vidéo personnel. Fête des Mères 2026. 49€ livraison offerte.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://emogift-furin.onrender.com">
+    <meta name="theme-color" content="#C97F6F">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://emogift-furin.onrender.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -751,6 +755,48 @@
             .concept-highlight { flex-direction: column; text-align: center; padding: 1.5rem; }
             .concept-highlight .price-detail { text-align: center; }
         }
+
+        /* ═══════════════════════════════════════════
+           ORDER MODAL
+           ═══════════════════════════════════════════ */
+        .modal-overlay { display:none; position:fixed; inset:0; background:rgba(44,36,22,0.85); z-index:9999; align-items:center; justify-content:center; }
+        .modal-overlay.active { display:flex; }
+        .modal-card { background:#fff; border-radius:20px; padding:2.5rem; max-width:500px; width:90%; position:relative; animation:fadeUp 0.4s ease; overflow:hidden; }
+        .modal-close { position:absolute; top:1rem; right:1.5rem; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--muted); z-index:2; }
+        .modal-close:hover { color:var(--dark); }
+        .modal-title { font-family:var(--font-heading); font-size:1.5rem; font-weight:700; color:var(--dark); margin-bottom:0.5rem; }
+        .modal-price { color:var(--primary-deep); font-family:var(--font-heading); font-size:1.2rem; margin-bottom:1.5rem; }
+        .modal-step { display:none; }
+        .modal-step.active { display:block; }
+        .modal-input { width:100%; padding:0.8rem 1rem; border:1.5px solid rgba(212,165,116,0.3); border-radius:12px; font-family:var(--font-body); font-size:0.95rem; margin-bottom:1rem; outline:none; transition:border-color 0.3s; background:var(--light); }
+        .modal-input:focus { border-color:var(--accent); }
+        .modal-label { font-size:0.85rem; font-weight:500; color:var(--muted); margin-bottom:0.3rem; display:block; }
+        .modal-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.8rem 2rem; border-radius:50px; font-family:var(--font-body); font-weight:600; font-size:0.95rem; cursor:pointer; transition:all 0.3s; border:none; }
+        .modal-btn-primary { background:var(--accent); color:var(--light); }
+        .modal-btn-primary:hover { background:var(--primary-deep); transform:translateY(-1px); }
+        .modal-btn-secondary { background:transparent; color:var(--muted); border:1.5px solid rgba(168,144,128,0.3); }
+        .modal-btn-secondary:hover { border-color:var(--accent); color:var(--dark); }
+        .modal-actions { display:flex; justify-content:space-between; gap:1rem; margin-top:1.5rem; }
+        .modal-success { text-align:center; }
+        .modal-success h3 { font-family:var(--font-heading); font-size:1.8rem; color:var(--primary-deep); margin-bottom:1rem; }
+        .modal-success p { color:var(--muted); line-height:1.7; }
+        .modal-demo-badge { display:inline-block; background:rgba(232,180,168,0.15); color:var(--primary-deep); font-size:0.75rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:0.3rem 1rem; border-radius:50px; margin-bottom:1.5rem; }
+        .modal-step-indicator { display:flex; justify-content:center; gap:0.5rem; margin-bottom:1.5rem; }
+        .modal-step-dot { width:10px; height:10px; border-radius:50%; background:rgba(212,165,116,0.25); transition:all 0.3s; }
+        .modal-step-dot.active { background:var(--accent); transform:scale(1.2); }
+        .modal-step-dot.done { background:var(--primary-deep); }
+        .modal-payment-sim { background:var(--cream); border-radius:16px; padding:2rem; text-align:center; margin-bottom:1rem; }
+        .modal-payment-sim p { color:var(--muted); font-size:0.95rem; line-height:1.6; }
+        .modal-payment-sim .sim-icon { font-size:2.5rem; margin-bottom:0.8rem; }
+        .confetti { position:absolute; width:8px; height:8px; border-radius:50%; animation:confettiFall 1.5s ease-out forwards; pointer-events:none; }
+        @keyframes confettiFall { 0% { transform:translateY(-20px) rotate(0); opacity:1; } 100% { transform:translateY(300px) rotate(720deg); opacity:0; } }
+
+        @media (max-width: 600px) {
+            .modal-card { padding:1.5rem; }
+            .modal-title { font-size:1.3rem; }
+            .modal-actions { flex-direction:column; }
+            .modal-actions .modal-btn { width:100%; justify-content:center; }
+        }
     </style>
 </head>
 <body>
@@ -762,7 +808,7 @@
         <a href="#" class="nav-logo">
             EmoGift
         </a>
-        <a href="#commander" class="nav-cta">Commander — 89€</a>
+        <a href="#commander" class="nav-cta">Commander — 49€</a>
     </nav>
 
     <!-- ═══════ HERO — VIDEO BACKGROUND ═══════ -->
@@ -781,7 +827,7 @@
                     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                     Créer mon EmoGift
                 </a>
-                <span class="hero-price">89€ — Livraison offerte avant le 25 mai</span>
+                <span class="hero-price">49€ — Livraison offerte avant le 25 mai</span>
             </div>
         </div>
 
@@ -802,7 +848,7 @@
                 elle scannera ce code, et votre amour lui répondra en vidéo.
             </p>
             <div class="concept-highlight">
-                <div class="price">89€</div>
+                <div class="price">49€</div>
                 <div class="price-detail">
                     Carillon furin artisanal<br>
                     + Vidéo personnelle QR<br>
@@ -919,7 +965,7 @@
             <p>Cette année, offrez quelque chose qu'on ne peut pas acheter ailleurs. Quelque chose de vrai.</p>
             <a href="#" class="btn-white">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                Composer mon EmoGift — 89€
+                Composer mon EmoGift — 49€
             </a>
         </div>
     </section>
@@ -929,13 +975,84 @@
         <p class="footer-brand">EmoGift</p>
         <p class="footer-tagline">Un carillon qui chante votre amour.</p>
         <div class="footer-links">
-            <a href="#">Mentions légales</a>
-            <a href="#">CGV</a>
-            <a href="#">Politique de confidentialité</a>
-            <a href="#">Contact</a>
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="cgv.html">CGV</a>
+            <a href="confidentialite.html">Confidentialité</a>
+            <a href="contact.html">Contact</a>
         </div>
         <p class="footer-copy">© 2026 EmoGift. Tous droits réservés.</p>
     </footer>
+
+    <!-- ═══════ ORDER MODAL ═══════ -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+
+            <!-- Step indicators -->
+            <div class="modal-step-indicator">
+                <div class="modal-step-dot active" data-dot="1"></div>
+                <div class="modal-step-dot" data-dot="2"></div>
+                <div class="modal-step-dot" data-dot="3"></div>
+            </div>
+
+            <!-- STEP 1: Identity -->
+            <div class="modal-step active" data-step="1">
+                <h2 class="modal-title">Commander mon EmoGift</h2>
+                <p class="modal-price">49&euro; &mdash; Livraison offerte</p>
+                <label class="modal-label" for="order-name">Votre nom complet</label>
+                <input class="modal-input" type="text" id="order-name" placeholder="Marie Dupont" required>
+                <label class="modal-label" for="order-email">Votre adresse e-mail</label>
+                <input class="modal-input" type="email" id="order-email" placeholder="marie@exemple.fr" required>
+                <div class="modal-actions" style="justify-content:flex-end">
+                    <button class="modal-btn modal-btn-primary" id="toStep2">Suivant &rarr;</button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Shipping -->
+            <div class="modal-step" data-step="2">
+                <h2 class="modal-title">Adresse de livraison</h2>
+                <p class="modal-price">49&euro; &mdash; Livraison offerte</p>
+                <label class="modal-label" for="order-address">Adresse</label>
+                <input class="modal-input" type="text" id="order-address" placeholder="12 rue des Lilas" required>
+                <label class="modal-label" for="order-city">Ville</label>
+                <input class="modal-input" type="text" id="order-city" placeholder="Paris" required>
+                <label class="modal-label" for="order-zip">Code postal</label>
+                <input class="modal-input" type="text" id="order-zip" placeholder="75011" required>
+                <div class="modal-actions">
+                    <button class="modal-btn modal-btn-secondary" id="backToStep1">&larr; Pr&eacute;c&eacute;dent</button>
+                    <button class="modal-btn modal-btn-primary" id="toStep3">Suivant &rarr;</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Payment simulation -->
+            <div class="modal-step" data-step="3">
+                <h2 class="modal-title">Paiement</h2>
+                <p class="modal-price">49&euro; &mdash; Livraison offerte</p>
+                <div class="modal-payment-sim">
+                    <div class="sim-icon">&#128179;</div>
+                    <span class="modal-demo-badge">Mode d&eacute;mo</span>
+                    <p>Paiement simul&eacute; &mdash; Ceci est une d&eacute;mo.<br>Aucun pr&eacute;l&egrave;vement ne sera effectu&eacute;.</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn modal-btn-secondary" id="backToStep2">&larr; Pr&eacute;c&eacute;dent</button>
+                    <button class="modal-btn modal-btn-primary" id="confirmOrder">Confirmer ma commande &#10003;</button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Success -->
+            <div class="modal-step" data-step="success">
+                <div class="modal-success">
+                    <div style="font-size:3.5rem; margin-bottom:1rem;">&#127873;</div>
+                    <h3>Merci !</h3>
+                    <p>Votre EmoGift sera exp&eacute;di&eacute; sous 5 jours &#128157;</p>
+                    <p style="margin-top:0.8rem; font-size:0.85rem; color:var(--muted); opacity:0.7;">Commande de d&eacute;monstration &mdash; aucun pr&eacute;l&egrave;vement effectu&eacute;.</p>
+                    <div class="modal-actions" style="justify-content:center; margin-top:2rem;">
+                        <button class="modal-btn modal-btn-primary" id="modalDone">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ═══════ JAVASCRIPT ═══════ -->
     <script>
@@ -963,9 +1080,10 @@
 
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // ── Smooth scroll for anchor links ──
+        // ── Smooth scroll for anchor links (skip CTA buttons — handled by modal) ──
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
+                if (this.matches('.btn-primary, .btn-white, .nav-cta')) return;
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -985,6 +1103,153 @@
                 heroVideo.style.opacity = 1 - progress * 0.5;
             }
         });
+
+        // ═══════════════════════════════════════════
+        // ORDER MODAL LOGIC
+        // ═══════════════════════════════════════════
+        (() => {
+            const modal = document.getElementById('orderModal');
+            const modalCard = modal.querySelector('.modal-card');
+            const closeBtn = document.getElementById('modalClose');
+            const dots = modal.querySelectorAll('.modal-step-dot');
+            const steps = modal.querySelectorAll('.modal-step');
+            let currentStep = 1;
+
+            // Open modal from any CTA button
+            document.querySelectorAll('.btn-primary, .btn-white, .nav-cta').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openModal();
+                });
+            });
+
+            function openModal() {
+                currentStep = 1;
+                showStep(1);
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                // Focus first input after animation
+                setTimeout(() => {
+                    const firstInput = modal.querySelector('[data-step="1"] .modal-input');
+                    if (firstInput) firstInput.focus();
+                }, 400);
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                // Reset form after close
+                setTimeout(() => {
+                    modal.querySelectorAll('.modal-input').forEach(i => i.value = '');
+                    showStep(1);
+                    currentStep = 1;
+                    // Remove leftover confetti
+                    modal.querySelectorAll('.confetti').forEach(c => c.remove());
+                }, 300);
+            }
+
+            function showStep(step) {
+                steps.forEach(s => s.classList.remove('active'));
+                if (step === 'success') {
+                    modal.querySelector('[data-step="success"]').classList.add('active');
+                    dots.forEach(d => d.classList.add('done'));
+                } else {
+                    modal.querySelector(`[data-step="${step}"]`).classList.add('active');
+                    dots.forEach(d => {
+                        const n = parseInt(d.dataset.dot);
+                        d.classList.remove('active', 'done');
+                        if (n < step) d.classList.add('done');
+                        if (n === step) d.classList.add('active');
+                    });
+                }
+            }
+
+            // Step navigation
+            document.getElementById('toStep2').addEventListener('click', () => {
+                const name = document.getElementById('order-name').value.trim();
+                const email = document.getElementById('order-email').value.trim();
+                if (!name || !email) { shakeCard(); return; }
+                currentStep = 2;
+                showStep(2);
+                document.getElementById('order-address').focus();
+            });
+
+            document.getElementById('backToStep1').addEventListener('click', () => {
+                currentStep = 1;
+                showStep(1);
+            });
+
+            document.getElementById('toStep3').addEventListener('click', () => {
+                const addr = document.getElementById('order-address').value.trim();
+                const city = document.getElementById('order-city').value.trim();
+                const zip = document.getElementById('order-zip').value.trim();
+                if (!addr || !city || !zip) { shakeCard(); return; }
+                currentStep = 3;
+                showStep(3);
+            });
+
+            document.getElementById('backToStep2').addEventListener('click', () => {
+                currentStep = 2;
+                showStep(2);
+            });
+
+            document.getElementById('confirmOrder').addEventListener('click', () => {
+                currentStep = 'success';
+                showStep('success');
+                launchConfetti();
+            });
+
+            // Close actions
+            closeBtn.addEventListener('click', closeModal);
+            document.getElementById('modalDone').addEventListener('click', closeModal);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+            });
+
+            // Shake animation for validation
+            function shakeCard() {
+                modalCard.style.animation = 'none';
+                modalCard.offsetHeight; // reflow
+                modalCard.style.animation = 'shake 0.4s ease';
+                setTimeout(() => { modalCard.style.animation = 'fadeUp 0.4s ease'; }, 400);
+            }
+
+            // Confetti burst
+            function launchConfetti() {
+                const colors = ['#E8B4A8', '#C97F6F', '#D4A574', '#F5EFE6', '#A89080', '#FFD700'];
+                const card = modalCard;
+                for (let i = 0; i < 20; i++) {
+                    const c = document.createElement('div');
+                    c.classList.add('confetti');
+                    c.style.left = Math.random() * 100 + '%';
+                    c.style.top = '-10px';
+                    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    c.style.animationDelay = (Math.random() * 0.5) + 's';
+                    c.style.animationDuration = (1 + Math.random()) + 's';
+                    c.style.width = (6 + Math.random() * 6) + 'px';
+                    c.style.height = c.style.width;
+                    card.appendChild(c);
+                }
+                // Clean up confetti after animation
+                setTimeout(() => {
+                    card.querySelectorAll('.confetti').forEach(c => c.remove());
+                }, 2500);
+            }
+        })();
+
+        // Shake keyframes (injected dynamically)
+        if (!document.querySelector('#shakeKeyframes')) {
+            const style = document.createElement('style');
+            style.id = 'shakeKeyframes';
+            style.textContent = '@keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)} 40%{transform:translateX(8px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }';
+            document.head.appendChild(style);
+        }
     </script>
 
 </body>
