@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: emogift-furin
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    branch: main
+    envVars: []
+    headers:
+      - path: "/*"
+        name: Cache-Control
+        value: "public, max-age=86400"
+      - path: "/*.mp4"
+        name: Cache-Control
+        value: "public, max-age=604800"
