@@ -586,53 +586,86 @@
         }
 
         /* ═══════════════════════════════════════════
-           TESTIMONIALS
+           VIDEO TESTIMONIALS
            ═══════════════════════════════════════════ */
-        .testimonials {
+        .testimonials-video {
             background: var(--light);
         }
 
-        .testimonials-grid {
+        .video-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .testimonial {
+        .video-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
             background: var(--white);
             border: 1px solid rgba(232, 180, 168, 0.2);
-            border-radius: 16px;
-            padding: 2rem;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .testimonial:hover {
+        .video-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 32px rgba(44, 36, 22, 0.1);
             border-color: var(--accent);
         }
 
-        .testimonial-stars {
-            color: var(--primary);
+        .video-card video {
+            width: 100%;
+            aspect-ratio: 9/16;
+            object-fit: cover;
+            border-radius: 16px;
+            max-height: 480px;
+            display: block;
+        }
+
+        .video-card .unmute-btn {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 5;
+        }
+
+        .video-card .unmute-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .video-card .caption {
+            text-align: center;
+            padding: 1rem 1rem 1.2rem;
+        }
+
+        .video-card .caption .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .video-card .caption .quote {
             font-size: 0.9rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .testimonial-text {
-            font-family: var(--font-heading);
-            font-size: 1.05rem;
-            font-style: italic;
-            line-height: 1.6;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .testimonial-author {
-            font-size: 0.85rem;
             color: var(--muted);
-            font-weight: 500;
+            font-style: italic;
+            margin-top: 0.3rem;
+            line-height: 1.5;
         }
 
         /* ═══════════════════════════════════════════
@@ -742,7 +775,7 @@
             .steps-grid { grid-template-columns: 1fr; max-width: 450px; margin-left: auto; margin-right: auto; }
             .product-grid { grid-template-columns: 1fr; }
             .product-visual { max-height: 400px; aspect-ratio: 3/4; }
-            .testimonials-grid { grid-template-columns: 1fr; max-width: 450px; margin-left: auto; margin-right: auto; }
+            .video-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
         }
 
         @media (max-width: 600px) {
@@ -814,6 +847,7 @@
     <!-- ═══════ HERO — VIDEO BACKGROUND ═══════ -->
     <section class="hero" id="hero">
         <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-label="Vidéo de présentation du furin EmoGift — carillon japonais cadeau émotionnel">
+            <!-- TODO: Replace with UGC-pass hero video (ugc_assembly.py output) -->
             <source src="emogift_hero_web.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -930,28 +964,43 @@
         </div>
     </section>
 
-    <!-- ═══════ TESTIMONIALS ═══════ -->
-    <section class="testimonials" id="avis">
+    <!-- ═══════ VIDEO TESTIMONIALS (UGC) ═══════ -->
+    <section class="testimonials-video" id="avis">
         <div class="container">
             <div class="reveal" style="text-align:center">
                 <p class="section-label">Témoignages</p>
-                <h2 class="section-title">Elles ont <em>offert l'émotion</em></h2>
+                <h2 class="section-title">Elles ont offert un <em>EmoGift</em></h2>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial reveal">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">« J'ai pleuré en enregistrant le message. Maman aussi, en le regardant. »</p>
-                    <p class="testimonial-author">— Marie, 26 ans</p>
+            <div class="video-grid">
+                <div class="video-card reveal">
+                    <video muted playsinline loop preload="metadata" poster="poster_marie.jpg">
+                        <source src="vignette_marie.mp4" type="video/mp4">
+                    </video>
+                    <button class="unmute-btn" aria-label="Activer le son" data-muted="true">&#x1F507;</button>
+                    <div class="caption">
+                        <p class="name">Marie, 26 ans</p>
+                        <p class="quote">&laquo; C'&eacute;tait la premi&egrave;re fois que je voyais ma m&egrave;re pleurer de joie... &raquo;</p>
+                    </div>
                 </div>
-                <div class="testimonial reveal">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">« Elle n'a pas arrêté de montrer sa vidéo à ses amies. C'est devenu son plus beau cadeau. »</p>
-                    <p class="testimonial-author">— Sophie, 31 ans</p>
+                <div class="video-card reveal">
+                    <video muted playsinline loop preload="metadata" poster="poster_sophie.jpg">
+                        <source src="vignette_sophie.mp4" type="video/mp4">
+                    </video>
+                    <button class="unmute-btn" aria-label="Activer le son" data-muted="true">&#x1F507;</button>
+                    <div class="caption">
+                        <p class="name">Sophie, 31 ans</p>
+                        <p class="quote">&laquo; J'ai film&eacute; le moment o&ugrave; elle a ouvert le paquet... Magique. &raquo;</p>
+                    </div>
                 </div>
-                <div class="testimonial reveal">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">« Le carillon chante toujours sur son balcon. Mais c'est la vidéo qu'elle regarde chaque matin. »</p>
-                    <p class="testimonial-author">— Isabelle, 28 ans</p>
+                <div class="video-card reveal">
+                    <video muted playsinline loop preload="metadata" poster="poster_lea.jpg">
+                        <source src="vignette_lea.mp4" type="video/mp4">
+                    </video>
+                    <button class="unmute-btn" aria-label="Activer le son" data-muted="true">&#x1F507;</button>
+                    <div class="caption">
+                        <p class="name">L&eacute;a, 28 ans</p>
+                        <p class="quote">&laquo; Ma m&egrave;re m'a rappel&eacute;e en pleurant. Le plus beau cadeau de sa vie. &raquo;</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1103,6 +1152,40 @@
                 heroVideo.style.opacity = 1 - progress * 0.5;
             }
         });
+
+        // ── Video testimonials: IntersectionObserver autoplay + mute toggle ──
+        (() => {
+            const videoCards = document.querySelectorAll('.video-card');
+
+            // Autoplay when in view, pause when out
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target.querySelector('video');
+                    if (!video) return;
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            videoCards.forEach(card => {
+                videoObserver.observe(card);
+
+                // Mute/unmute toggle on button click
+                const btn = card.querySelector('.unmute-btn');
+                const video = card.querySelector('video');
+                if (btn && video) {
+                    btn.addEventListener('click', () => {
+                        video.muted = !video.muted;
+                        btn.dataset.muted = video.muted ? 'true' : 'false';
+                        btn.innerHTML = video.muted ? '\u{1F507}' : '\u{1F50A}';
+                        btn.setAttribute('aria-label', video.muted ? 'Activer le son' : 'Couper le son');
+                    });
+                }
+            });
+        })();
 
         // ═══════════════════════════════════════════
         // ORDER MODAL LOGIC
