@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmoGift by Noezys — Le cadeau qui fait pleurer de joie</title>
+    <meta name="description" content="Furin japonais + vidéo personnelle pour Fête des Mères. Offrez un carillon en verre soufflé avec votre message vidéo caché. Cadeau émotionnel unique à 89€.">
+    <meta property="og:title" content="EmoGift — Offrez plus qu'un cadeau, offrez votre cœur">
+    <meta property="og:description" content="Un carillon japonais en verre soufflé accompagné de votre message vidéo personnel. Fête des Mères 2026.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #D4A574;
+            --primary-deep: #C97F6F;
+            --accent: #E8B4A8;
+            --dark: #2C2416;
+            --light: #FDFBF7;
+            --cream: #F5EFE6;
+            --muted: #A89080;
+            --white: #FFFFFF;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+            overflow-x: hidden;
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+           ═══════════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(253, 251, 247, 0.95);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(44, 36, 22, 0.08);
+            padding: 0.8rem 2rem;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+
+        .nav.scrolled .nav-logo { color: var(--dark); }
+
+        .nav-logo span {
+            font-weight: 400;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            display: block;
+            font-family: var(--font-body);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-cta {
+            background: rgba(232, 180, 168, 0.25);
+            border: 1.5px solid rgba(253, 251, 247, 0.5);
+            color: var(--light);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav.scrolled .nav-cta {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--light);
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO SECTION — VIDEO BACKGROUND
+           ═══════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            z-index: 0;
+            animation: videoReveal 2s ease-out forwards;
+        }
+
+        @keyframes videoReveal {
+            from { transform: translate(-50%, -50%) scale(1.05); filter: blur(4px); }
+            to { transform: translate(-50%, -50%) scale(1); filter: blur(0); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(44, 36, 22, 0.3) 0%,
+                rgba(44, 36, 22, 0.15) 40%,
+                rgba(44, 36, 22, 0.5) 80%,
+                rgba(44, 36, 22, 0.75) 100%
+            );
+            z-index: 10;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            max-width: 700px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(232, 180, 168, 0.2);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(232, 180, 168, 0.3);
+            color: var(--light);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            color: var(--light);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 12px rgba(44, 36, 22, 0.25);
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.5s forwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: rgba(253, 251, 247, 0.9);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.7s forwards;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.9s forwards;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--accent);
+            color: var(--light);
+            border: 2px solid var(--accent);
+            padding: 1rem 2.5rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(232, 180, 168, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-deep);
+            border-color: var(--primary-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 127, 111, 0.45);
+        }
+
+        /* ── Focus-visible (accessibility) ── */
+        .btn-primary:focus-visible, .btn-white:focus-visible, .nav-cta:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .nav-logo:focus-visible, .footer-links a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* ── Skip to content (accessibility) ── */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: var(--light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 8px 8px;
+            z-index: 10000;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: top 0.2s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .hero-price {
+            font-size: 0.85rem;
+            color: rgba(253, 251, 247, 0.6);
+            letter-spacing: 1px;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            color: rgba(253, 251, 247, 0.5);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            animation: bounceDown 2s infinite;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 30px;
+            background: rgba(253, 251, 247, 0.3);
+            margin: 0.5rem auto 0;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ═══════════════════════════════════════════
+           SECTION BASICS
+           ═══════════════════════════════════════════ */
+        section { padding: 6rem 2rem; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title em { font-style: italic; color: var(--primary-deep); }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ═══════════════════════════════════════════
+           CONCEPT / EMOTIONAL INTRO
+           ═══════════════════════════════════════════ */
+        .concept {
+            background: var(--light);
+            text-align: center;
+        }
+
+        .concept-text {
+            max-width: 680px;
+            margin: 0 auto 3rem;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--dark);
+        }
+
+        .concept-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--white);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem 2.5rem;
+            margin-top: 1rem;
+        }
+
+        .concept-highlight .price {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-deep);
+        }
+
+        .concept-highlight .price-detail {
+            text-align: left;
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════════
+           HOW IT WORKS — 3 STEPS
+           ═══════════════════════════════════════════ */
+        .steps {
+            background: linear-gradient(180deg, var(--light) 0%, var(--cream) 100%);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: var(--white);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 165, 116, 0.15);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(44, 36, 22, 0.1);
+            border-color: var(--accent);
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .step-number {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .step h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           PRODUCT SECTION
+           ═══════════════════════════════════════════ */
+        .product {
+            background: var(--cream);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-visual {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--primary), var(--primary-deep));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-visual .furin-illustration {
+            font-size: 8rem;
+            filter: drop-shadow(0 8px 24px rgba(44, 36, 22, 0.2));
+            animation: gentleSway 4s ease-in-out infinite;
+        }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .product-text h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-text h2 em { font-style: italic; color: var(--primary-deep); }
+
+        .product-text p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--white);
+            border: 1px solid rgba(212, 165, 116, 0.25);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════════
+           EMOTIONAL SECTION
+           ═══════════════════════════════════════════ */
+        .emotion {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emotion::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(201, 127, 111, 0.08) 0%, transparent 60%);
+        }
+
+        .emotion .container { position: relative; z-index: 2; }
+
+        .emotion-quote {
+            max-width: 700px;
+            margin: 0 auto;
+            font-family: var(--font-heading);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.7;
+            color: rgba(253, 251, 247, 0.9);
+        }
+
+        .emotion-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 2.5rem auto;
+            opacity: 0.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           TESTIMONIALS
+           ═══════════════════════════════════════════ */
+        .testimonials {
+            background: var(--light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: var(--white);
+            border: 1px solid rgba(232, 180, 168, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .testimonial:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(44, 36, 22, 0.1);
+            border-color: var(--accent);
+        }
+
+        .testimonial-stars {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════════
+           FINAL CTA
+           ═══════════════════════════════════════════ */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 50%, var(--accent) 100%);
+            text-align: center;
+            color: var(--light);
+            padding: 5rem 2rem;
+        }
+
+        .final-cta .section-label { color: rgba(253, 251, 247, 0.6); }
+
+        .final-cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        .btn-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--light);
+            color: var(--primary-deep);
+            border: 2px solid var(--light);
+            padding: 1.1rem 3rem;
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(44, 36, 22, 0.15);
+        }
+
+        .btn-white:hover {
+            background: transparent;
+            color: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(44, 36, 22, 0.2);
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════ */
+        .footer {
+            background: var(--dark);
+            color: rgba(253, 251, 247, 0.6);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(253, 251, 247, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            opacity: 0.4;
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .steps-grid { grid-template-columns: 1fr; max-width: 450px; margin-left: auto; margin-right: auto; }
+            .product-grid { grid-template-columns: 1fr; }
+            .product-visual { max-height: 400px; aspect-ratio: 3/4; }
+            .testimonials-grid { grid-template-columns: 1fr; max-width: 450px; margin-left: auto; margin-right: auto; }
+        }
+
+        @media (max-width: 600px) {
+            section { padding: 4rem 1.5rem; }
+            .nav { padding: 1rem 1.2rem; }
+            .nav-logo { font-size: 1.2rem; }
+            .nav-cta { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .btn-primary, .btn-white { padding: 0.9rem 2rem; font-size: 0.95rem; }
+            .concept-highlight { flex-direction: column; text-align: center; padding: 1.5rem; }
+            .concept-highlight .price-detail { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#concept" class="skip-link">Aller au contenu principal</a>
+
+    <!-- ═══════ NAVIGATION ═══════ -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">
+            EmoGift
+            <span>by Noezys</span>
+        </a>
+        <a href="#commander" class="nav-cta">Commander — 89€</a>
+    </nav>
+
+    <!-- ═══════ HERO — VIDEO BACKGROUND ═══════ -->
+    <section class="hero" id="hero">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-label="Vidéo de présentation du furin EmoGift — carillon japonais cadeau émotionnel">
+            <source src="emogift_hero_web.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">Fête des Mères 2026</div>
+            <h1>Offrez plus qu'un cadeau, offrez <em>votre cœur</em></h1>
+            <p class="hero-sub">Un carillon japonais en verre soufflé, accompagné de votre message vidéo personnel. Quand maman découvrira le QR code caché, elle recevra deux cadeaux à la fois.</p>
+            <div class="hero-cta-group">
+                <a href="#commander" class="btn-primary">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    Créer mon EmoGift
+                </a>
+                <span class="hero-price">89€ — Livraison offerte avant le 25 mai</span>
+            </div>
+        </div>
+
+        <div class="hero-scroll">Découvrir</div>
+    </section>
+
+    <!-- ═══════ CONCEPT / EMOTIONAL INTRO ═══════ -->
+    <section class="concept" id="concept">
+        <div class="container reveal">
+            <p class="section-label">L'idée</p>
+            <h2 class="section-title">Deux cadeaux en <em>un seul geste</em></h2>
+            <p class="concept-text">
+                Votre mère a passé des années à écouter vos histoires, vos rires, vos silences.
+                Aujourd'hui, c'est à vous de remplir son quotidien de votre présence.
+                Ce carillon n'est pas qu'une décoration — c'est une promesse sonore.
+                À chaque fois qu'il chante au vent, elle vous sentira là, tout près.
+                Et quand elle aura besoin de vous, vraiment besoin,
+                elle scannera ce code, et votre amour lui répondra en vidéo.
+            </p>
+            <div class="concept-highlight">
+                <div class="price">89€</div>
+                <div class="price-detail">
+                    Carillon furin artisanal<br>
+                    + Vidéo personnelle QR<br>
+                    + Livraison offerte
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ HOW IT WORKS ═══════ -->
+    <section class="steps" id="comment">
+        <div class="container">
+            <div class="reveal" style="text-align:center">
+                <p class="section-label">Comment ça marche</p>
+                <h2 class="section-title">Trois étapes, <em>une émotion infinie</em></h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step reveal">
+                    <div class="step-icon"><span role="img" aria-label="Caméra vidéo">🎥</span></div>
+                    <p class="step-number">Étape 01</p>
+                    <h3>Enregistrez votre amour</h3>
+                    <p>Commandez votre furin et filmez un message vidéo personnel. Quelques mots suffisent — c'est votre voix, votre regard, vos émotions qui compteront.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-icon"><span role="img" aria-label="Cadeau">🎁</span></div>
+                    <p class="step-number">Étape 02</p>
+                    <h3>Maman découvre le mystère</h3>
+                    <p>Elle reçoit votre carillon magnifiquement emballé dans du papier washi. À l'intérieur, un petit QR code discret l'attend, comme une surprise suspendue.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-icon"><span role="img" aria-label="Cœur avec ruban">💝</span></div>
+                    <p class="step-number">Étape 03</p>
+                    <h3>L'instant où tout bascule</h3>
+                    <p>Elle scanne. Votre visage apparaît. Votre voix remplit sa cuisine, son jardin, son cœur. C'est comme si vous la serriez dans vos bras, même de loin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ PRODUCT ═══════ -->
+    <section class="product" id="produit">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-visual reveal">
+                    <div class="furin-illustration"><span role="img" aria-label="Furin — carillon japonais">🎐</span></div>
+                </div>
+                <div class="product-text reveal">
+                    <p class="section-label">Le produit</p>
+                    <h2>Un carillon soufflé à la main, <em>venu du Japon</em></h2>
+                    <p>
+                        Chaque furin est une pièce unique, façonnée par des mains expertes dans la tradition
+                        japonaise centenaire. Fabriqué en verre pur et délicat, il produit une mélodie douce
+                        et cristalline — le bruit des clochettes qui dansent dans le vent.
+                        À chaque courant d'air, c'est un moment de poésie qui se répète.
+                    </p>
+                    <div class="product-features">
+                        <span class="feature-tag"><span role="img" aria-label="Étoile">✦</span> Verre soufflé artisanal</span>
+                        <span class="feature-tag"><span role="img" aria-label="Japon">🇯🇵</span> Tradition japonaise</span>
+                        <span class="feature-tag"><span role="img" aria-label="Musique">🎵</span> Son cristallin unique</span>
+                        <span class="feature-tag"><span role="img" aria-label="Téléphone">📱</span> QR vidéo intégré</span>
+                        <span class="feature-tag"><span role="img" aria-label="Peinture">🎨</span> Peint à la main</span>
+                        <span class="feature-tag"><span role="img" aria-label="Ruban">🎀</span> Emballage washi premium</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ EMOTIONAL SECTION ═══════ -->
+    <section class="emotion">
+        <div class="container reveal">
+            <p class="emotion-quote">
+                « Votre mère a passé des années à écouter vos histoires.<br>
+                Aujourd'hui, offrez-lui le plus beau des récits :<br>
+                celui de votre amour, en image et en son. »
+            </p>
+            <div class="emotion-divider"></div>
+            <p class="section-label" style="color: rgba(253,251,247,0.4)">EmoGift by Noezys</p>
+        </div>
+    </section>
+
+    <!-- ═══════ TESTIMONIALS ═══════ -->
+    <section class="testimonials" id="avis">
+        <div class="container">
+            <div class="reveal" style="text-align:center">
+                <p class="section-label">Témoignages</p>
+                <h2 class="section-title">Elles ont <em>offert l'émotion</em></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">« J'ai pleuré en enregistrant le message. Maman aussi, en le regardant. »</p>
+                    <p class="testimonial-author">— Marie, 26 ans</p>
+                </div>
+                <div class="testimonial reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">« Elle n'a pas arrêté de montrer sa vidéo à ses amies. C'est devenu son plus beau cadeau. »</p>
+                    <p class="testimonial-author">— Sophie, 31 ans</p>
+                </div>
+                <div class="testimonial reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">« Le carillon chante toujours sur son balcon. Mais c'est la vidéo qu'elle regarde chaque matin. »</p>
+                    <p class="testimonial-author">— Isabelle, 28 ans</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FINAL CTA ═══════ -->
+    <section class="final-cta" id="commander">
+        <div class="container reveal">
+            <p class="section-label">Fête des Mères 2026</p>
+            <h2>L'amour en deux temps</h2>
+            <p>Cette année, offrez quelque chose qu'on ne peut pas acheter ailleurs. Quelque chose de vrai.</p>
+            <a href="#" class="btn-white">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                Composer mon EmoGift — 89€
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+        <p class="footer-brand">EmoGift by Noezys</p>
+        <p class="footer-tagline">Un carillon qui chante votre amour.</p>
+        <div class="footer-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">CGV</a>
+            <a href="#">Politique de confidentialité</a>
+            <a href="#">Contact</a>
+        </div>
+        <p class="footer-copy">© 2026 Noezys. Tous droits réservés.</p>
+    </footer>
+
+    <!-- ═══════ JAVASCRIPT ═══════ -->
+    <script>
+        // ── Nav scroll effect ──
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // ── Scroll reveal with Intersection Observer ──
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    // Stagger delay based on sibling index
+                    const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+                    let idx = 0;
+                    siblings.forEach((s, j) => { if (s === entry.target) idx = j; });
+                    entry.target.style.transitionDelay = `${idx * 0.12}s`;
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ── Smooth scroll for anchor links ──
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ── Parallax-like video slow scroll ──
+        const heroVideo = document.querySelector('.hero-video');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const heroHeight = document.querySelector('.hero').offsetHeight;
+            if (scrolled < heroHeight) {
+                const progress = scrolled / heroHeight;
+                heroVideo.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.3}px)) scale(${1 + progress * 0.05})`;
+                heroVideo.style.opacity = 1 - progress * 0.5;
+            }
+        });
+    </script>
+
+</body>
+</html>
